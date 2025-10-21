@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Todo lista</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Todo-lista</h1>
+
+    <form id="todo-form" aria-label="Lisää tehtävä">
+      <input id="todo-input" type="text" placeholder="Kirjoita tehtävä..." required />
+      <button type="submit">Lisää</button>
+    </form>
+
+    <ul id="todo-list" aria-live="polite"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
