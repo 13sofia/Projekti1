@@ -1,5 +1,7 @@
 # Todo-sovellus
 
+[Sovellus](https://projekti1-sofia.netlify.app/)
+
 Todo-lista, joka on toteutettu HTML, CSS ja JavaScript'lla.
 
 ## Ominaisuudet
