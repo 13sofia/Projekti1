@@ -1,12 +1,16 @@
+// Haetaan tarvittavat DOM elementit
 const form = document.getElementById('todo-form');
 const input = document.getElementById('todo-input');
 const list = document.getElementById('todo-list');
 
+// Local Storage avain todojen tallennukseen
 const STORAGE_KEY = 'todos-v1';
 
+// Ladataan tallennetut todot ja näytetään ne
 let todos = loadTodos();
 renderTodos();
 
+// Kuunnellaan formin lähetystä
 form.addEventListener('submit', e => {
   e.preventDefault();
   const text = input.value.trim();
@@ -19,6 +23,7 @@ form.addEventListener('submit', e => {
   input.focus();
 });
 
+// Ladataan todot Local Storagesta
 function loadTodos(){
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -27,15 +32,18 @@ function loadTodos(){
   }
 }
 
+// Tallennetaan todot Local Storageen
 function saveTodos(){
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
 }
 
+// Renderöidään kaikki todot
 function renderTodos(){
   list.innerHTML = '';
   todos.forEach(appendTodoItem);
 }
 
+// Lisätään yksittäinen todo DOM:iin
 function appendTodoItem(todo){
   const li = document.createElement('li');
   li.dataset.id = todo.id;
@@ -62,6 +70,7 @@ function appendTodoItem(todo){
   list.appendChild(li);
 }
 
+// Merkitään todo tehdyksi/tekemättömäksi
 function toggleDone(id, done){
   const t = todos.find(x => x.id === id);
   if (!t) return;
@@ -71,6 +80,7 @@ function toggleDone(id, done){
   if (li) li.classList.toggle('completed', done);
 }
 
+// Poistetaan todo
 function removeTodo(id){
   todos = todos.filter(x => x.id !== id);
   saveTodos();
